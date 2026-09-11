@@ -10,6 +10,7 @@ namespace _3ISIP324_Siniavskaya
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("hi");
 
         }
     }
