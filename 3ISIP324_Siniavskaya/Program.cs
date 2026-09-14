@@ -28,7 +28,6 @@ namespace _3ISIP324_Siniavskaya
                 string input = Console.ReadLine();
 
                 string[] np = input.Split(';');
-
                 string name = np[0].Trim();
                 double price = Convert.ToDouble(np[1].Trim());
 
@@ -40,32 +39,28 @@ namespace _3ISIP324_Siniavskaya
 
             while (choice != 0)
             {
-                Console.WriteLine("\n МЕНЮ");
+                Console.WriteLine("\nМЕНЮ");
                 Console.WriteLine("1. Вывод данных");
                 Console.WriteLine("2. Статистика");
                 Console.WriteLine("3. Сортировка по цене");
                 Console.WriteLine("4. Конвертация валюты");
                 Console.WriteLine("5. Поиск по названию");
                 Console.WriteLine("0. Выход");
-
                 Console.Write("Выберите пункт: ");
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("\n===== ВАШИ РАСХОДЫ =====");
+                        Console.WriteLine("\nВАШИ РАСХОДЫ");
 
                         for (int i = 0; i < names.Count; i++)
                         {
                             Console.WriteLine($"{i + 1}. {names[i]} — {prices[i]} руб.");
                         }
-
                         break;
-
                     case 2:
                         double sum = 0;
-
                         for (int i = 0; i < prices.Count; i++)
                         {
                             sum += prices[i];
@@ -74,15 +69,12 @@ namespace _3ISIP324_Siniavskaya
                         double average = sum / prices.Count;
                         double max = prices.Max();
                         double min = prices.Min();
-
-                        Console.WriteLine("\n===== СТАТИСТИКА =====");
+                        Console.WriteLine("\nСТАТИСТИКА");
                         Console.WriteLine("Сумма: " + sum + " руб.");
                         Console.WriteLine("Среднее: " + average + " руб.");
                         Console.WriteLine("Максимальная трата: " + max + " руб.");
                         Console.WriteLine("Минимальная трата: " + min + " руб.");
-
                         break;
-
                     case 3:
                         for (int i = 0; i < prices.Count - 1; i++)
                         {
@@ -100,38 +92,28 @@ namespace _3ISIP324_Siniavskaya
                                 }
                             }
                         }
-
-                        Console.WriteLine("\n===== СОРТИРОВКА ПО ЦЕНЕ =====");
-
+                        Console.WriteLine("\nСОРТИРОВКА ПО ЦЕНЕ");
                         for (int i = 0; i < prices.Count; i++)
                         {
                             Console.WriteLine($"{i + 1}. {names[i]} — {prices[i]} руб.");
                         }
-
                         break;
-
                     case 4:
                         Console.Write("Введите название валюты: ");
                         string currency = Console.ReadLine();
-
                         Console.Write("Введите курс валюты (рублей за 1 единицу): ");
                         double rate = Convert.ToDouble(Console.ReadLine());
-
-                        Console.WriteLine("\n===== КОНВЕРТАЦИЯ =====");
+                        Console.WriteLine("\nКОНВЕРТАЦИЯ");
 
                         for (int i = 0; i < prices.Count; i++)
                         {
                             double convertedPrice = prices[i] / rate;
-
                             Console.WriteLine($"{names[i]} — {convertedPrice:F2} {currency}");
                         }
-
                         break;
-
                     case 5:
                         Console.Write("Введите название товара или услуги: ");
                         string search = Console.ReadLine();
-
                         bool found = false;
 
                         for (int i = 0; i < names.Count; i++)
@@ -142,18 +124,14 @@ namespace _3ISIP324_Siniavskaya
                                 found = true;
                             }
                         }
-
                         if (!found)
                         {
                             Console.WriteLine("Товар или услуга не найдены.");
                         }
-
                         break;
-
                     case 0:
                         Console.WriteLine("Программа завершена.");
                         break;
-
                     default:
                         Console.WriteLine("Такого пункта нет.");
                         break;
