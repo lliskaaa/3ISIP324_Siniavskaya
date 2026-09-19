@@ -67,7 +67,7 @@ namespace _3ISIP324_Siniavskaya
             while (true)
             {
                 Console.WriteLine();
-                Console.WriteLine("УЧЁТ ТОВАРОВ В МАГАЗИНЕ");
+                Console.WriteLine("\nУЧЁТ ТОВАРОВ В МАГАЗИНЕ");
                 Console.WriteLine("1. Добавить товар");
                 Console.WriteLine("2. Удалить товар");
                 Console.WriteLine("3. Заказать поставку");
@@ -86,15 +86,7 @@ namespace _3ISIP324_Siniavskaya
                     case "2":
                         DeleteProduct();
                         break;
-                    case "3":
-                        SupplyProduct();
-                        break;
-                    case "4":
-                        SellProduct();
-                        break;
-                    case "5":
-                        SearchProducts();
-                        break;
+               
                     case "0":
                         return;
                     default:
@@ -107,7 +99,7 @@ namespace _3ISIP324_Siniavskaya
         }
         static void AddProduct()
         {
-            Console.Write("Введите название товара: ");
+            Console.Write("\nВведите название товара: ");
             string name = Console.ReadLine();
 
             if (name == "")
@@ -163,15 +155,12 @@ namespace _3ISIP324_Siniavskaya
                     case "1":
                         category = Category.Vegetab;
                         break;
-
                     case "2":
                         category = Category.Fruits;
                         break;
-
                     case "3":
                         category = Category.Berri;
                         break;
-
                     default:
                         Console.WriteLine("Неверная категория!");
                         continue;
@@ -183,8 +172,45 @@ namespace _3ISIP324_Siniavskaya
             Product product = new Product(name, price, quantity, category);
             products.Add(product);
 
-            Console.WriteLine("Товар добавлен.");
+            Console.WriteLine("Товар добавлен.\n");
             product.PrintInfo();
+        }
+        static void DeleteProduct()
+        {
+            Console.WriteLine("Список товаров:");
+
+            for (int i = 0; i < products.Count; i++)
+            {
+                Console.WriteLine(products[i].ID + "-" + products[i].Name);
+            }
+
+            int ID;
+
+            while (true)
+            {
+                Console.Write("Введите код товара, который хотите удалить: ");
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out ID) && ID > 0)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Введите правильный код!");
+            }
+
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (products[i].ID == ID)
+                {
+                    Console.WriteLine("Вы удаляете товар: " + products[i].Name);
+                    products.RemoveAt(i);
+                    Console.WriteLine("Товар удалён.");
+                    return;
+                }
+            }
+
+            Console.WriteLine("Товар с таким кодом не найден.");
         }
     }
 }
