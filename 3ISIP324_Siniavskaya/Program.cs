@@ -36,7 +36,6 @@ namespace _3ISIP324_Siniavskaya
             }
 
             int choice = -1;
-
             while (choice != 0)
             {
                 Console.WriteLine("\nМЕНЮ");
