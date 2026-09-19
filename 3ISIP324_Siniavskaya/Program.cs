@@ -55,7 +55,7 @@ namespace _3ISIP324_Siniavskaya
 
                         for (int i = 0; i < names.Count; i++)
                         {
-                            Console.WriteLine($"{i + 1}. {names[i]} — {prices[i]} руб.");
+                            Console.WriteLine($"{i + 1}. ({names[i]}; {prices[i]})");
                         }
                         break;
                     case 2:
