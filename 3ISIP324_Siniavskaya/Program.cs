@@ -94,7 +94,7 @@ namespace _3ISIP324_Siniavskaya
                         Console.WriteLine("\nСОРТИРОВКА ПО ЦЕНЕ");
                         for (int i = 0; i < prices.Count; i++)
                         {
-                            Console.WriteLine($"{i + 1}. {names[i]} — {prices[i]} руб.");
+                            Console.WriteLine($"({i + 1}. {names[i]}; {prices[i]}) руб.");
                         }
                         break;
                     case 4:
@@ -107,7 +107,7 @@ namespace _3ISIP324_Siniavskaya
                         for (int i = 0; i < prices.Count; i++)
                         {
                             double convertedPrice = prices[i] / rate;
-                            Console.WriteLine($"{names[i]} — {convertedPrice:F2} {currency}");
+                            Console.WriteLine($"({names[i]}; {convertedPrice:F2} {currency})");
                         }
                         break;
                     case 5:
@@ -119,7 +119,7 @@ namespace _3ISIP324_Siniavskaya
                         {
                             if (names[i].ToLower().Contains(search.ToLower()))
                             {
-                                Console.WriteLine($"{names[i]} — {prices[i]} руб.");
+                                Console.WriteLine($"({names[i]}; {prices[i]}) руб.");
                                 found = true;
                             }
                         }
