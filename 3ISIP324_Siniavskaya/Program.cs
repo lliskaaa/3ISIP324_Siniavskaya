@@ -175,7 +175,43 @@ namespace _3ISIP324_Siniavskaya
             Console.WriteLine("Товар добавлен.\n");
             product.PrintInfo();
         }
-        
 
+        static void DeleteProduct()
+        {
+            Console.WriteLine("Список товаров:");
+
+            for (int i = 0; i < products.Count; i++)
+            {
+                Console.WriteLine(products[i].ID + "-" + products[i].Name);
+            }
+
+            int ID;
+
+            while (true)
+            {
+                Console.Write("Введите код товара, который хотите удалить: ");
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out ID) && ID > 0)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Введите правильный код!");
+            }
+
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (products[i].ID == ID)
+                {
+                    Console.WriteLine("Вы удаляете товар: " + products[i].Name);
+                    products.RemoveAt(i);
+                    Console.WriteLine("Товар удалён.");
+                    return;
+                }
+            }
+
+            Console.WriteLine("Товар с таким кодом не найден.");
+        }
     }
 }
