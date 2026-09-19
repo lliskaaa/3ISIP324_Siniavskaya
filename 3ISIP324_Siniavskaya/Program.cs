@@ -35,6 +35,7 @@ namespace _3ISIP324_Siniavskaya
                 prices.Add(price);
             }
 
+
             int choice = -1;
             while (choice != 0)
             {
