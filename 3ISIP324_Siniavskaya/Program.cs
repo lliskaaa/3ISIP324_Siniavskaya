@@ -23,7 +23,6 @@ namespace _3ISIP324_Siniavskaya
         public Category Category { get; set; }
 
         private static int nextID = 1;
-
         public Product(string name, double price, int quantity, Category category)
         {
             ID = nextID;
@@ -34,6 +33,24 @@ namespace _3ISIP324_Siniavskaya
             Quantity = quantity;
             Category = category;
         }
+
+        public bool InStock
+        {
+            get
+            {
+                return Quantity > 0;
+            }
+        }
+        public void PrintInfo()
+        {
+            Console.WriteLine("Код: " + ID);
+            Console.WriteLine("Название: " + Name);
+            Console.WriteLine("Цена: " + Price + " руб.");
+            Console.WriteLine("Количество: " + Quantity);
+            Console.WriteLine("На складе: " + (InStock ? "Да" : "Нет"));
+            Console.WriteLine("Категория: " + Category);
+        }
+
     }
     internal class Program
     {
