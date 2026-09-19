@@ -54,11 +54,64 @@ namespace _3ISIP324_Siniavskaya
     }
     internal class Program
     {
+        static List<Product> products = new List<Product>();
+
         static void Main(string[] args)
         {
-           
+            products.Add(new Product("Яблоки", 150, 10, Category.Fruits));
+            products.Add(new Product("Морковь", 80, 15, Category.Vegetab));
+            products.Add(new Product("Клубника", 300, 8, Category.Berri));
+            products.Add(new Product("Бананы", 120, 12, Category.Fruits));
+            products.Add(new Product("Помидоры", 200, 7, Category.Vegetab));
+
+            while (true)
+            {
+                Console.WriteLine();
+                Console.WriteLine("УЧЁТ ТОВАРОВ В МАГАЗИНЕ");
+                Console.WriteLine("1. Добавить товар");
+                Console.WriteLine("2. Удалить товар");
+                Console.WriteLine("3. Заказать поставку");
+                Console.WriteLine("4. Продать товар");
+                Console.WriteLine("5. Поиск товаров");
+                Console.WriteLine("0. Выход");
+
+                Console.Write("Выберите действие: ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        AddProduct()
+                        
+                        break;
+
+                    case "2":
+                        DeleteProduct();
+                        break;
+
+                    case "3":
+                        SupplyProduct();
+                        break;
+
+                    case "4":
+                        SellProduct();
+                        break;
+
+                    case "5":
+                        SearchProducts();
+                        break;
+
+                    case "0":
+                        return;
+
+                    default:
+                        Console.WriteLine("Неверная команда.");
+                        break;
+                }
+            }
 
 
         }
+
     }
 }
