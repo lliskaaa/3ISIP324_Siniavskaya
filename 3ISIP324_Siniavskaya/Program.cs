@@ -81,29 +81,22 @@ namespace _3ISIP324_Siniavskaya
                 switch (choice)
                 {
                     case "1":
-                        AddProduct()
-                        
+                        AddProduct();                 
                         break;
-
                     case "2":
                         DeleteProduct();
                         break;
-
                     case "3":
                         SupplyProduct();
                         break;
-
                     case "4":
                         SellProduct();
                         break;
-
                     case "5":
                         SearchProducts();
                         break;
-
                     case "0":
                         return;
-
                     default:
                         Console.WriteLine("Неверная команда.");
                         break;
@@ -112,6 +105,86 @@ namespace _3ISIP324_Siniavskaya
 
 
         }
+        static void AddProduct()
+        {
+            Console.Write("Введите название товара: ");
+            string name = Console.ReadLine();
 
+            if (name == "")
+            {
+                Console.WriteLine("Название товара не может быть пустым.");
+                return;
+            }
+
+            double price;
+
+            while (true)
+            {
+                Console.Write("Введите цену: ");
+                string input = Console.ReadLine();
+
+                if (double.TryParse(input, out price) && price > 0)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Введите положительную цену.");
+            }
+
+            int quantity;
+
+            while (true)
+            {
+                Console.Write("Введите количество: ");
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out quantity) && quantity >= 0)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Количество не может быть отрицательным.");
+            }
+
+            Category category;
+
+            while (true)
+            {
+                Console.WriteLine("Выберите категорию:");
+                Console.WriteLine("1. Овощи");
+                Console.WriteLine("2. Фрукты");
+                Console.WriteLine("3. Ягоды");
+
+                Console.Write("Ваш выбор: ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        category = Category.Vegetab;
+                        break;
+
+                    case "2":
+                        category = Category.Fruits;
+                        break;
+
+                    case "3":
+                        category = Category.Berri;
+                        break;
+
+                    default:
+                        Console.WriteLine("Неверная категория!");
+                        continue;
+                }
+
+                break;
+            }
+
+            Product product = new Product(name, price, quantity, category);
+            products.Add(product);
+
+            Console.WriteLine("Товар добавлен.");
+            product.PrintInfo();
+        }
     }
 }
